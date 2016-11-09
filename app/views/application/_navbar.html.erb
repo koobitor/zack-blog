@@ -2,4 +2,13 @@
   <div class='navbar-header'>
     <a class='navbar-brand' href='#'>Blog</a>
   </div>
+  <div class='container-fluid'>
+    <ul class='nav navbar-nav navbar-right'>
+      <% if user_signed_in? %>
+        <%= render 'signed_in' %>
+      <% else %>
+        <%= render 'signed_out' %>
+      <% end %>
+    </ul>
+  </div>
 </nav>
