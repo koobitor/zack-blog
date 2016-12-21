@@ -1,0 +1,10 @@
+<p>Hi, <%= @user.username || @user.email %></p>
+
+Someone commented:
+
+<div>
+  <%= @comment.body %>
+</div>
+
+<hr>
+on: <%= link_to @post.title, post_url(@post) %>

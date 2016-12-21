@@ -1,0 +1,9 @@
+Hi, <%= @user.username || @user.email %>
+----------------------------------------
+
+Someone commented:
+
+<%= @comment.body %>
+
+on:
+<%= post_url(@post) %>
