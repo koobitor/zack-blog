@@ -1,6 +1,8 @@
 class Post < ApplicationRecord
   validates :title, presence: true
 
+  # belongs_to :user
+
   has_many :comments
   has_many :commenters, through: :comments, source: :user
 
@@ -12,6 +14,6 @@ class Post < ApplicationRecord
   after_commit :scrape_link_screenshot
 
   def scrape_link_screenshot
-    LinkScreenshotJob.perform_later(self)
+   PostLinkJob.perform_later(self)
   end
 end

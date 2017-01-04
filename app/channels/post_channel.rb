@@ -1,7 +1,7 @@
 class PostChannel < ApplicationCable::Channel
   def subscribed
     post = Post.find(params[:id].split('/').last)
-    stream_for post
+    stream_for post if post
   end
 
   def unsubscribed
