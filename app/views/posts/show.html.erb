@@ -2,10 +2,19 @@
 
 <h1><%= @post.title %></h1>
 
-<%= @post.body %>
+<%= simple_format @post.body %>
 
 
 <hr>
+
+<h3>Links</h3>
+
+<% @post.links.each do |link| %>
+  <%= link_to link.url, target: '_blank' do %>
+    <%= image_tag link.screenshot.url, class: 'img-thumbnail img-responsive', width: 320 %>
+  <% end %>
+<% end %>
+
 
 <h3>Comments</h3>
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161207073148) do
+ActiveRecord::Schema.define(version: 20161221074836) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,21 @@ ActiveRecord::Schema.define(version: 20161207073148) do
     t.integer  "user_id"
     t.index ["post_id"], name: "index_comments_on_post_id", using: :btree
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
+  end
+
+  create_table "links", force: :cascade do |t|
+    t.string   "url"
+    t.string   "screenshot"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["url"], name: "index_links_on_url", using: :btree
+  end
+
+  create_table "links_posts", id: false, force: :cascade do |t|
+    t.integer "link_id"
+    t.integer "post_id"
+    t.index ["link_id"], name: "index_links_posts_on_link_id", using: :btree
+    t.index ["post_id"], name: "index_links_posts_on_post_id", using: :btree
   end
 
   create_table "posts", force: :cascade do |t|

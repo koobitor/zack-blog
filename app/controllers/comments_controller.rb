@@ -7,6 +7,8 @@ class CommentsController < ApplicationController
     @comment = @post.comments.build(comment_params)
     @comment.user = current_user
     @comment.save
+    PostChannel.broadcast_to(@post, @comment)
+
     redirect_to post_path(@post)
   end
 
